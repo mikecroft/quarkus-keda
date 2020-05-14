@@ -1,6 +1,6 @@
 FROM quay.io/quarkus/centos-quarkus-maven:20.0.0-java11 AS build
-COPY ./pom.xml ./pom.xml
-COPY src/* src/
+COPY amqp-producer/pom.xml ./pom.xml
+COPY amqp-producer/src/* src/
 RUN ls -lh ./src
 RUN mvn -Pnative package -DskipTests
 
