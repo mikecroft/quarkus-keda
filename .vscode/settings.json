@@ -1,8 +1,7 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/home/mike/.config/Code/User/globalStorage/redhat.vscode-camelk/java-dependencies-3.0.1/*.jar"
+        "lib/**/*.jar"
     ],
     "quarkus.tools.validation.unknown.excluded": [
         "*/mp-rest/providers/*/priority",
