@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Build the amqp-consumer image
+      run: docker build amqp-consumer --file amqp-consumer/src/main/multistage.Dockerfile --tag amqp-consumer:$(date +%s)
+      
+    - name: Build the amqp-producer image
+      run: docker build amqp-producer --file amqp-producer/src/main/multistage.Dockerfile --tag amqp-producer:$(date +%s)
