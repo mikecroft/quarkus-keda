@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: amq-monitor
+  labels:
+    k8s-app: prometheus
+  namespace: keda
+spec:
+  selector:
+    matchLabels:
+      app: amq-prom-raw-metrics
+  endpoints:
+    - port: metrics
+      interval: 2s

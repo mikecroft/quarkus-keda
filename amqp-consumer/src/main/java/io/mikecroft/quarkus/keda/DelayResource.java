@@ -10,16 +10,16 @@ import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-@Path("/rate")
-public class RateResource {
+@Path("/delay")
+public class DelayResource {
 
-    @ConfigProperty(name = "timer.period")
-    String rate;
+    @ConfigProperty(name="consumer.delay")
+    String delay;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getRate() {
-        return rate;
+    public String getDelay() {
+        return delay;
     }
 
 }

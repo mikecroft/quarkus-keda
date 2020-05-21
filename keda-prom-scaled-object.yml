@@ -1,0 +1,19 @@
+apiVersion: keda.k8s.io/v1alpha1
+kind: ScaledObject
+metadata:
+  name: prometheus-scaledobject
+  namespace: keda
+spec:
+  scaleTargetRef:
+    deploymentName: amqp-consumer
+    pollingInterval: 1
+    cooldownPeriod:  1
+    minReplicaCount: 0
+    maxReplicaCount: 30
+  triggers:
+  - type: prometheus
+    metadata:
+      serverAddress: http://prometheus-operated:9090
+      metricName: artemis_message_count
+      threshold: '20'
+      query: sum(artemis_message_count{address="myqueue",endpoint="metrics",instance="172.30.108.228:9404",job="broker-amq-prom",namespace="keda",pod="amq-prom-1-5nfhg",queue="myqueue",service="broker-amq-prom"})

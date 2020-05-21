@@ -9,8 +9,8 @@ public class CamelProducer extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("timer:foo?period=1000")
-            .setBody(simple("Hello MQTT! ${header.firedTime}"))
+        from("timer:foo?period={{timer.period}}")
+            .setBody(simple("Hello AMQ! ${header.firedTime}"))
             // .log("my message at ${header.firedTime}")
             .to("amqp:queue:myqueue");
     }
